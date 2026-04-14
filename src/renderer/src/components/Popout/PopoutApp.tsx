@@ -146,14 +146,14 @@ const PopoutApp: React.FC = () => {
         )}
 
         <input
-          className={styles.titleField}
+          className={`${styles.titleField} ${mode === 'edit' ? styles.editOutline : ''}`}
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           onBlur={() => { if (title !== note.title) _saveTitle(title) }}
           placeholder="Untitled"
         />
 
-        <div className={styles.body}>
+        <div className={`${styles.body} ${mode === 'edit' ? styles.editOutline : ''}`}>
           {mode === 'edit' ? (
             <CodeMirrorEditor
               key={note.id}

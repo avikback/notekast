@@ -69,11 +69,16 @@ const CodeMirrorEditor = React.memo<CodeMirrorEditorProps>(({ value, onSave, onC
         updateListener,
         EditorView.theme({
           '&': { height: '100%', background: 'var(--bg-primary)' },
-          '.cm-scroller': { fontFamily: 'var(--font-family)', fontSize: '18px', lineHeight: '1.6', overflow: 'auto' },
-          '.cm-content': { padding: '12px 16px', caretColor: 'var(--accent)', color: 'var(--text-primary)' },
-          '.cm-focused': { outline: 'none' },
-          '.cm-cursor': { borderLeftColor: 'var(--accent)' }
-        }),
+          '.cm-scroller': { fontFamily: 'var(--font-family)', fontSize: '18px', lineHeight: '1.6', overflow: 'auto', background: 'var(--bg-primary)' },
+          '.cm-content': { padding: '12px 16px', caretColor: 'var(--accent)', color: 'var(--text-primary)', background: 'var(--bg-primary)' },
+          '.cm-activeLine': { background: 'rgba(255,255,255,0.04)' },
+          '.cm-gutters': { background: 'var(--bg-primary)', border: 'none', color: 'var(--text-muted)' },
+          '.cm-activeLineGutter': { background: 'transparent' },
+          '&.cm-focused': { outline: 'none' },
+          '.cm-cursor': { borderLeftColor: 'var(--accent)' },
+          '.cm-selectionBackground': { background: 'var(--accent-tint)' },
+          '&.cm-focused .cm-selectionBackground': { background: 'rgba(93,173,163,0.3)' }
+        }, { dark: true }),
         EditorView.lineWrapping
       ]
     })

@@ -36,12 +36,23 @@
   display: flex;
   align-items: center;
   gap: 4px;
+  max-width: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-width 0.25s ease, opacity 0.2s ease;
+}
+
+.actionsOpen {
+  max-width: 400px;
+  opacity: 1;
 }
 
 .gitBtn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 5px;
+  min-width: 74px;
   background: var(--git-dark);
   border: none;
   border-radius: var(--radius-sm);
@@ -50,6 +61,7 @@
   font-size: var(--font-small);
   padding: 5px 10px;
   cursor: pointer;
+  white-space: nowrap;
 }
 .gitBtn:hover { background: var(--git-hover); }
 .gitBtn:disabled { opacity: 0.5; cursor: not-allowed; }

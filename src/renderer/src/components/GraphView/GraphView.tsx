@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import Graph from 'graphology'
 import Sigma from 'sigma'
 import forceAtlas2 from 'graphology-layout-forceatlas2'
+import Icon from '../Icon/Icon'
 import { useApp } from '../../context/AppContext'
 import styles from './GraphView.module.css'
 
@@ -17,7 +18,9 @@ function _shortLabel(title: string): string {
 
 /** Interactive force-directed graph of notes using Graphology + Sigma.js. */
 const GraphView: React.FC = () => {
-  const { state } = useApp()
+  const { state, dispatch } = useApp()
+
+  const _goList = (): void => dispatch({ type: 'SET_PANEL_VIEW', view: 'list' })
   const containerRef = useRef<HTMLDivElement>(null)
   const sigmaRef = useRef<Sigma | null>(null)
   const graphRef = useRef<Graph | null>(null)
@@ -35,7 +38,7 @@ const GraphView: React.FC = () => {
     notes.forEach((n) => {
       graph.addNode(n.id, {
         label: _shortLabel(n.title),
-        title: n.id, // tooltip text (shown by sigma on hover)
+        title: n.id,
         x: Math.random() * 10 - 5,
         y: Math.random() * 10 - 5,
         size: 8,
@@ -45,14 +48,12 @@ const GraphView: React.FC = () => {
 
     // Add edges
     notes.forEach((n) => {
-      // Parent edge
       if (n.parent && graph.hasNode(n.parent)) {
         const eId = `parent:${n.id}`
         if (!graph.hasEdge(eId)) {
           graph.addEdge(n.id, n.parent, { id: eId, color: EDGE_PARENT_COLOR, size: 1.5 })
         }
       }
-      // General / peer links
       n.links.forEach((linkId) => {
         if (!graph.hasNode(linkId)) return
         const eId = `link:${n.id}:${linkId}`
@@ -62,9 +63,9 @@ const GraphView: React.FC = () => {
       })
     })
 
-    // Run initial layout passes to get a reasonable starting position
-    const settings = forceAtlas2.inferSettings(graph)
-    forceAtlas2.assign(graph, { iterations: 100, settings })
+    // Run initial layout passes — tight clustering settings
+    const settings = { ...forceAtlas2.inferSettings(graph), scalingRatio: 0.08, gravity: 8, strongGravityMode: true }
+    forceAtlas2.assign(graph, { iterations: 200, settings })
 
     const renderer = new Sigma(graph, containerRef.current, {
       renderEdgeLabels: false,
@@ -123,15 +124,16 @@ const GraphView: React.FC = () => {
       sigmaRef.current = null
       graphRef.current = null
     }
-  // Re-build when the note list changes (notes added/removed/retitled)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.notes])
 
-  const isEmpty = state.notes.length === 0
-
   return (
     <div className={styles.wrapper}>
-      {isEmpty ? (
+      <button className={styles.backBtn} onClick={_goList}>
+        <Icon name="list-view" size={14} />
+        List
+      </button>
+      {state.notes.length === 0 ? (
         <p className={styles.empty}>
           No notes yet — create some notecards to see the graph.
         </p>

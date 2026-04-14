@@ -45,46 +45,44 @@ const GitStrip: React.FC = () => {
         <Icon name="git" size={18} />
       </button>
 
-      {expanded && (
-        <div className={styles.actions}>
-          {hasRepo ? (
-            <>
-              <button
-                className={styles.gitBtn}
-                onClick={() => _run(() => window.api.gitCommit(projectPath))}
-                disabled={loading}
-              >
-                <Icon name="commit" size={15} />
-                Commit
-              </button>
-              <button
-                className={styles.gitBtn}
-                onClick={() => _run(() => window.api.gitPush(projectPath))}
-                disabled={loading}
-              >
-                <Icon name="push" size={15} />
-                Push
-              </button>
-              <button
-                className={styles.gitBtn}
-                onClick={() => _run(() => window.api.gitPull(projectPath))}
-                disabled={loading}
-              >
-                <Icon name="pull" size={15} />
-                Pull
-              </button>
-            </>
-          ) : (
+      <div className={`${styles.actions} ${expanded ? styles.actionsOpen : ''}`}>
+        {hasRepo ? (
+          <>
             <button
               className={styles.gitBtn}
-              onClick={() => _run(() => window.api.gitInit(projectPath))}
+              onClick={() => _run(() => window.api.gitCommit(projectPath))}
               disabled={loading}
             >
-              Init Git Repo
+              <Icon name="commit" size={15} />
+              Commit
             </button>
-          )}
-        </div>
-      )}
+            <button
+              className={styles.gitBtn}
+              onClick={() => _run(() => window.api.gitPush(projectPath))}
+              disabled={loading}
+            >
+              <Icon name="push" size={15} />
+              Push
+            </button>
+            <button
+              className={styles.gitBtn}
+              onClick={() => _run(() => window.api.gitPull(projectPath))}
+              disabled={loading}
+            >
+              <Icon name="pull" size={15} />
+              Pull
+            </button>
+          </>
+        ) : (
+          <button
+            className={styles.gitBtn}
+            onClick={() => _run(() => window.api.gitInit(projectPath))}
+            disabled={loading}
+          >
+            Init Git Repo
+          </button>
+        )}
+      </div>
     </div>
   )
 }

@@ -1,5 +1,6 @@
 .wrapper {
   flex: 1;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -7,6 +8,25 @@
   overflow: hidden;
   height: 100%;
 }
+
+.backBtn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--bg-chrome);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-family: var(--font-family);
+  font-size: var(--font-small);
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.backBtn:hover { color: var(--text-primary); background: var(--bg-row-hover); }
 
 .canvas {
   width: 100%;

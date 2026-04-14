@@ -40,12 +40,27 @@
   padding: 10px 16px 4px;
   flex-shrink: 0;
   width: 100%;
+  box-sizing: border-box;
 }
 .titleField::placeholder { color: var(--text-muted); }
+.titleField.editOutline {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  margin: 6px 16px 2px;
+  width: calc(100% - 32px);
+  padding: 8px 10px;
+}
+.titleField.editOutline:focus { border-color: var(--accent); }
 
 .body {
   flex: 1;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+}
+.body.editOutline {
+  margin: 4px 16px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
 }

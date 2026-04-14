@@ -93,7 +93,7 @@ const Editor: React.FC<EditorProps> = ({ note }) => {
 
       {/* Title field */}
       <input
-        className={styles.titleField}
+        className={`${styles.titleField} ${mode === 'edit' ? styles.editOutline : ''}`}
         value={title}
         placeholder="Untitled"
         onChange={(e) => setTitle(e.target.value)}
@@ -101,7 +101,7 @@ const Editor: React.FC<EditorProps> = ({ note }) => {
       />
 
       {/* Body */}
-      <div className={styles.body}>
+      <div className={`${styles.body} ${mode === 'edit' ? styles.editOutline : ''}`}>
         {mode === 'edit' ? (
           <CodeMirrorEditor
             key={note.id}
