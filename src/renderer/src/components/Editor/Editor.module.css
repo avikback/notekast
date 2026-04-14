@@ -1,0 +1,51 @@
+.column {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--bg-primary);
+  overflow: hidden;
+}
+
+.luhmannId {
+  color: var(--text-muted);
+  font-size: var(--font-body);
+  padding: 6px 16px 0;
+  flex-shrink: 0;
+}
+
+.tagRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 6px 16px 0;
+  flex-shrink: 0;
+}
+
+.relationRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 4px 16px 0;
+  flex-shrink: 0;
+}
+
+.titleField {
+  background: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  font-size: var(--font-title);
+  font-weight: bold;
+  border: none;
+  outline: none;
+  padding: 10px 16px 4px;
+  flex-shrink: 0;
+  width: 100%;
+}
+.titleField::placeholder { color: var(--text-muted); }
+
+.body {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}

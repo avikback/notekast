@@ -1,0 +1,45 @@
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.card:hover {
+  border-color: var(--accent-dim);
+  background: var(--bg-card-hover);
+}
+.card.active {
+  border-color: var(--accent);
+  background: var(--bg-card-hover);
+}
+
+.noteId {
+  color: var(--text-muted);
+  font-size: var(--font-body);
+}
+
+.title {
+  color: var(--text-primary);
+  font-size: var(--font-large);
+  font-weight: bold;
+  word-break: break-word;
+}
+
+.snippet {
+  color: var(--text-secondary);
+  font-size: var(--font-small);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 4px;
+}

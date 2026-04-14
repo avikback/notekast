@@ -1,0 +1,86 @@
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 44px;
+  background: var(--bg-chrome);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 100;
+}
+
+.fileMenu {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+}
+
+.fileBtn {
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  font-size: var(--font-small);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+.fileBtn:hover {
+  background: var(--bg-row-hover);
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  min-width: 200px;
+  z-index: 200;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.menuItem {
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  font-size: var(--font-body);
+  text-align: left;
+  padding: 9px 16px;
+  cursor: pointer;
+}
+.menuItem:hover {
+  background: var(--bg-row-hover);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding-right: 8px;
+}
+
+.ctrlBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 28px;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+.ctrlBtn:hover {
+  background: var(--bg-row-hover);
+}
+.closeBtn:hover {
+  background: var(--danger);
+}

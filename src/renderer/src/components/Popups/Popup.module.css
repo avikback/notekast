@@ -1,0 +1,122 @@
+.popup {
+  position: fixed;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  z-index: 500;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+  max-height: 360px;
+  overflow-y: auto;
+}
+
+.popupTitle {
+  color: var(--text-primary);
+  font-size: var(--font-body);
+  font-weight: 500;
+  padding: 2px 0;
+}
+
+.searchWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 8px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.searchInput {
+  background: var(--bg-input);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 6px 8px 6px 30px;
+  font-family: var(--font-family);
+  font-size: var(--font-body);
+  outline: none;
+  width: 100%;
+}
+.searchInput:focus { border-color: var(--accent); }
+.searchInput::placeholder { color: var(--text-muted); }
+
+.inputWrap .searchInput {
+  padding-left: 10px;
+}
+
+.list { list-style: none; }
+
+.row {
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  font-size: var(--font-body);
+  text-align: left;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+.row:hover {
+  background: var(--bg-row-hover);
+  color: var(--accent);
+}
+
+.empty {
+  color: var(--text-muted);
+  font-size: var(--font-small);
+  padding: 8px;
+}
+
+.chipWrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+/* Autocomplete dropdown overlay */
+.completer {
+  border: 1px solid var(--accent-dim);
+  border-radius: var(--radius-sm);
+  background: var(--accent-tint);
+  padding: 4px;
+}
+
+.completerLinks {
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  background: rgba(150, 100, 220, 0.1);
+  padding: 4px;
+}
+
+.completerItem {
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: var(--accent);
+  font-family: var(--font-family);
+  font-size: var(--font-body);
+  text-align: left;
+  padding: 5px 8px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+.completerItem:hover { background: var(--bg-row-hover); }
+
+.completerLinks .completerItem { color: var(--link-text); }
+
+.suggId {
+  color: var(--text-muted);
+  font-size: var(--font-small);
+  margin-right: 4px;
+}

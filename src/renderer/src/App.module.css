@@ -1,0 +1,42 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.splitter {
+  width: 2px;
+  background: var(--border);
+  cursor: col-resize;
+  flex-shrink: 0;
+}
+.splitter:hover {
+  background: var(--accent-dim);
+}
+
+.placeholder {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 48px;
+  height: 100%;
+  background: var(--bg-primary);
+}
+.placeholder p {
+  color: var(--text-muted);
+  font-size: var(--font-body);
+}

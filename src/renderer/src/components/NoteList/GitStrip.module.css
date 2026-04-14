@@ -1,0 +1,55 @@
+.capsule {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-chrome);
+  border-radius: var(--radius-md);
+  padding: 4px 8px;
+  margin: 0 12px 4px;
+  width: fit-content;
+}
+
+.gitIconBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+.gitIconBtn:hover {
+  background: var(--git-icon-wash);
+}
+.gitIconBtn.hasRepo {
+  color: var(--git-hover);
+}
+.gitIconBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.gitBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--git-dark);
+  border: none;
+  border-radius: var(--radius-sm);
+  color: #ffffff;
+  font-family: var(--font-family);
+  font-size: var(--font-small);
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.gitBtn:hover { background: var(--git-hover); }
+.gitBtn:disabled { opacity: 0.5; cursor: not-allowed; }

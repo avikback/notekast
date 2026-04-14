@@ -1,0 +1,80 @@
+/* NoteKast design-system tokens — all values from the specification. */
+:root {
+  /* ── Backgrounds ─────────────────────────────────────────────── */
+  --bg-primary:          #1a1a2e;   /* middle panel, editor pane */
+  --bg-secondary:        #16213e;   /* sidebar, toolbar strip, dialogs */
+  --bg-tertiary:         #0f3460;   /* structural depth (reserved) */
+  --bg-card:             #1e2746;   /* note cards */
+  --bg-input:            #162040;   /* text fields, info blocks */
+  --bg-row-hover:        #1e3a5f;   /* hover on buttons / rows */
+  --bg-card-hover:       #1a3a5c;   /* note card hover fill */
+  --bg-chrome:           #0e0e1a;   /* title bar, git capsule, popout */
+  --bg-popout:           #0e0e1a;
+  --bg-popout-footer:    #121828;
+
+  /* ── Text ────────────────────────────────────────────────────── */
+  --text-primary:        #e0e0e0;
+  --text-secondary:      #a0a0b8;
+  --text-muted:          #6a6a80;
+
+  /* ── Accent ──────────────────────────────────────────────────── */
+  --accent:              #5aada0;
+  --accent-dim:          #3d7d72;
+  --accent-tint:         rgba(90, 173, 160, 0.15);
+
+  /* ── Chips ───────────────────────────────────────────────────── */
+  --tag-fill:            rgba(90, 173, 160, 0.25);
+  --tag-text:            #5aada0;
+
+  --link-fill:           rgba(150, 100, 220, 0.40);
+  --link-fill-hover:     rgba(150, 100, 220, 0.55);
+  --link-text:           #b388e8;
+
+  --parent-fill:         rgba(200, 190, 100, 0.35);
+  --parent-fill-hover:   rgba(200, 190, 100, 0.50);
+  --parent-text:         #d4cc88;
+
+  --child-fill:          rgba(200, 120, 120, 0.35);
+  --child-fill-hover:    rgba(200, 120, 120, 0.50);
+  --child-text:          #d89898;
+
+  /* ── Borders ─────────────────────────────────────────────────── */
+  --border:              #2a2a4a;
+  --border-light:        #3a3a5a;
+
+  /* ── Danger ──────────────────────────────────────────────────── */
+  --danger:              #ef4444;
+  --danger-hover:        #dc2626;
+
+  /* ── Pop-out accent ──────────────────────────────────────────── */
+  --popout-accent:       #3d7d72;
+  --popout-accent-tint:  rgba(45, 93, 84, 0.15);
+  --popout-tag-fill:     rgba(45, 93, 84, 0.25);
+  --popout-tag-text:     #3d7d72;
+
+  /* ── Git ─────────────────────────────────────────────────────── */
+  --git-bright:          #00FF88;
+  --git-dark:            #006B3C;
+  --git-hover:           #159965;
+  --git-icon-wash:       rgba(48, 175, 118, 0.12);
+  --git-toast-bg:        #000000;
+
+  /* ── Scrollbar ───────────────────────────────────────────────── */
+  --scrollbar-track:     #1a1a2e;
+  --scrollbar-thumb:     #3a3a5a;
+  --scrollbar-thumb-hover: #4a4a6a;
+
+  /* ── Radii ───────────────────────────────────────────────────── */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-chip: 12px;
+
+  /* ── Typography ──────────────────────────────────────────────── */
+  --font-family:   'Segoe UI', Ubuntu, sans-serif;
+  --font-body:     18px;
+  --font-small:    15px;
+  --font-large:    22px;
+  --font-title:    28px;
+  --font-dialog:   22px;
+}

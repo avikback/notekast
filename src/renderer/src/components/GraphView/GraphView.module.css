@@ -1,0 +1,21 @@
+.wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-primary);
+  overflow: hidden;
+  height: 100%;
+}
+
+.canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.empty {
+  color: var(--text-muted);
+  font-size: var(--font-body);
+  text-align: center;
+  padding: 20px;
+}
