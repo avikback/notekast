@@ -53,7 +53,6 @@ const GitStrip: React.FC = () => {
               onClick={() => _run(() => window.api.gitCommit(projectPath))}
               disabled={loading}
             >
-              <Icon name="commit" size={15} />
               Commit
             </button>
             <button
@@ -61,7 +60,6 @@ const GitStrip: React.FC = () => {
               onClick={() => _run(() => window.api.gitPush(projectPath))}
               disabled={loading}
             >
-              <Icon name="push" size={15} />
               Push
             </button>
             <button
@@ -69,7 +67,6 @@ const GitStrip: React.FC = () => {
               onClick={() => _run(() => window.api.gitPull(projectPath))}
               disabled={loading}
             >
-              <Icon name="pull" size={15} />
               Pull
             </button>
           </>

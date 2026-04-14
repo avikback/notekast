@@ -52,7 +52,7 @@
   align-items: center;
   justify-content: center;
   gap: 5px;
-  min-width: 74px;
+  width: 80px;
   background: var(--git-dark);
   border: none;
   border-radius: var(--radius-sm);
