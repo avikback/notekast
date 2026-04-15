@@ -8,16 +8,16 @@ import { syntaxHighlighting, defaultHighlightStyle } from '@codemirror/language'
 
 interface CodeMirrorEditorProps {
   value: string
-  /** Called after the 2 s autosave debounce. */
+  /** Called after the debounced autosave interval elapses. */
   onSave: (value: string) => void
   /** Called immediately (e.g. for Ctrl+S flush path). */
   onChange: (value: string) => void
 }
 
-const AUTOSAVE_DELAY = 2000
+const AUTOSAVE_DELAY = 500
 
 /**
- * CodeMirror 6 Markdown editor with 2-second autosave debounce.
+ * CodeMirror 6 Markdown editor with debounced autosave (`AUTOSAVE_DELAY` ms).
  * Mounts once per note (key the parent on noteId to force remount on note change).
  */
 const CodeMirrorEditor = React.memo<CodeMirrorEditorProps>(({ value, onSave, onChange }) => {
