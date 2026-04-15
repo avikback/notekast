@@ -1,15 +1,14 @@
 #Requires -Version 5.1
 $ErrorActionPreference = 'Stop'
-[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 
 # ── Helpers ────────────────────────────────────────────────────────────────────
 
 function Write-Banner {
     Clear-Host
     Write-Host ''
-    Write-Host '  ╔═══════════════════════════════════════════╗' -ForegroundColor Cyan
-    Write-Host '  ║           NoteKast  Installer             ║' -ForegroundColor Cyan
-    Write-Host '  ╚═══════════════════════════════════════════╝' -ForegroundColor Cyan
+    Write-Host '  ==========================================' -ForegroundColor Cyan
+    Write-Host '          NoteKast  Installer               ' -ForegroundColor Cyan
+    Write-Host '  ==========================================' -ForegroundColor Cyan
     Write-Host ''
 }
 
