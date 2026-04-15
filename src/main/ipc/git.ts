@@ -1,7 +1,7 @@
 import { ipcMain } from 'electron'
 import fs from 'fs'
 import path from 'path'
-import { execSync, spawnSync } from 'child_process'
+import { spawnSync } from 'child_process'
 
 /** Returns true if the directory contains a .git folder. */
 function _hasRepo(projectPath: string): boolean {
@@ -25,7 +25,7 @@ function _buildCommitMessage(projectPath: string): string {
   const modified: string[] = []
   const deleted: string[] = []
 
-  for (const line of status.split('\n')) {
+  for (const line of status.split(/\r?\n/)) {
     if (!line.trim()) continue
     const code = line.slice(0, 2).trim()
     const file = line.slice(3).trim()
@@ -47,16 +47,15 @@ export function registerGitHandlers(): void {
   ipcMain.handle('git-has-repo', (_event, projectPath: string) => _hasRepo(projectPath))
 
   ipcMain.handle('git-init', (_event, projectPath: string) => {
-    _git(['init'], projectPath)
+    _git(['init', '-b', 'main'], projectPath)
     _git(['add', '.'], projectPath)
     try {
-      execSync('git commit --allow-empty -m "initial commit"', {
-        cwd: projectPath,
-        env: { ...process.env, GIT_AUTHOR_NAME: 'NoteKast', GIT_AUTHOR_EMAIL: 'notekast@local',
-               GIT_COMMITTER_NAME: 'NoteKast', GIT_COMMITTER_EMAIL: 'notekast@local' }
-      })
+      _git([
+        '-c', 'user.name=NoteKast', '-c', 'user.email=notekast@local',
+        'commit', '--allow-empty', '-m', 'initial commit'
+      ], projectPath)
     } catch {
-      // Tolerate: may fail if git identity not configured globally
+      // Tolerate: may fail on very old git versions
     }
   })
 

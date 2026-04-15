@@ -32,13 +32,12 @@ export function registerProjectHandlers(): void {
     fs.mkdirSync(projectPath, { recursive: true })
 
     if (initGit) {
-      const { execSync } = await import('child_process')
-      execSync('git init', { cwd: projectPath })
-      execSync('git commit --allow-empty -m "initial commit"', {
-        cwd: projectPath,
-        env: { ...process.env, GIT_AUTHOR_NAME: 'NoteKast', GIT_AUTHOR_EMAIL: 'notekast@local',
-               GIT_COMMITTER_NAME: 'NoteKast', GIT_COMMITTER_EMAIL: 'notekast@local' }
-      })
+      const { spawnSync } = await import('child_process')
+      spawnSync('git', ['init', '-b', 'main'], { cwd: projectPath })
+      spawnSync('git', [
+        '-c', 'user.name=NoteKast', '-c', 'user.email=notekast@local',
+        'commit', '--allow-empty', '-m', 'initial commit'
+      ], { cwd: projectPath })
     }
   })
 }
