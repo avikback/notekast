@@ -3,6 +3,9 @@ import { contextBridge, ipcRenderer } from 'electron'
 /** Typed API exposed to the renderer via contextBridge. */
 const api = {
   // ── Root ───────────────────────────────────────────────────────
+  isFirstRun: (): Promise<boolean> => ipcRenderer.invoke('is-first-run'),
+  getInitialDefaultPath: (): Promise<string> => ipcRenderer.invoke('get-initial-default-path'),
+  setInitialRoot: (rootPath: string): Promise<void> => ipcRenderer.invoke('set-initial-root', rootPath),
   getDefaultRoot: (): Promise<string> => ipcRenderer.invoke('get-default-root'),
   copyRoot: (destination: string): Promise<string> => ipcRenderer.invoke('copy-root', destination),
   showOpenDialog: (options?: { title?: string }): Promise<string | null> =>

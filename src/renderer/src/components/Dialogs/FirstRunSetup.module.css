@@ -1,0 +1,76 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.dialog {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  width: 520px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+.titleBar {
+  padding: 0 20px;
+  height: 52px;
+  background: var(--bg-chrome);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.title {
+  color: var(--text-primary);
+  font-size: var(--font-dialog);
+  font-weight: bold;
+}
+
+.body {
+  padding: 24px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.description {
+  color: var(--text-primary);
+  font-size: var(--font-body);
+  line-height: 1.6;
+}
+
+.folderLabel {
+  color: var(--text-secondary);
+  font-size: var(--font-small);
+  margin-bottom: 2px;
+}
+
+.browseRow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.pathInput {
+  flex: 1;
+}
+
+.hint {
+  color: var(--text-muted);
+  font-size: var(--font-small);
+  line-height: 1.5;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 4px;
+}

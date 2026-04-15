@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef } from 'react'
+import React, { useState, useEffect, useCallback, useRef } from 'react'
 import { AppProvider, useApp } from './context/AppContext'
 import TitleBar from './components/TitleBar/TitleBar'
 import Sidebar from './components/Sidebar/Sidebar'
@@ -15,6 +15,7 @@ import ProjectPicker from './components/Popups/ProjectPicker'
 import TagsEditor from './components/Popups/TagsEditor'
 import LinksEditor from './components/Popups/LinksEditor'
 import PopoutApp from './components/Popout/PopoutApp'
+import FirstRunSetup from './components/Dialogs/FirstRunSetup'
 import styles from './App.module.css'
 
 // ── Splitter ──────────────────────────────────────────────────────────────────
@@ -154,7 +155,17 @@ const MainApp: React.FC = () => {
 const App: React.FC = () => {
   const isPopout = new URLSearchParams(window.location.search).get('mode') === 'popout'
 
+  // null = still checking, false = show setup, true = ready
+  const [setupDone, setSetupDone] = useState<boolean | null>(isPopout ? true : null)
+
+  useEffect(() => {
+    if (isPopout) return
+    window.api.isFirstRun().then((firstRun) => setSetupDone(!firstRun))
+  }, [isPopout])
+
   if (isPopout) return <PopoutApp />
+  if (setupDone === null) return null
+  if (!setupDone) return <FirstRunSetup onDone={() => setSetupDone(true)} />
 
   return (
     <AppProvider>

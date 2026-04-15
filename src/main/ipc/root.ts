@@ -1,7 +1,7 @@
-import { ipcMain, dialog, BrowserWindow } from 'electron'
+import { ipcMain, dialog, app, BrowserWindow } from 'electron'
 import fs from 'fs'
 import path from 'path'
-import { getDefaultRoot, setDefaultRoot } from '../store'
+import { isFirstRun, getDefaultRoot, setDefaultRoot } from '../store'
 
 /** Recursively copies src into dest, preserving all files including .git. */
 async function _copyRecursive(src: string, dest: string): Promise<void> {
@@ -35,6 +35,17 @@ function _validateCopyDestination(src: string, dest: string): string | null {
 }
 
 export function registerRootHandlers(): void {
+  ipcMain.handle('is-first-run', () => isFirstRun())
+
+  ipcMain.handle('get-initial-default-path', () =>
+    path.join(app.getPath('documents'), 'NoteKast')
+  )
+
+  ipcMain.handle('set-initial-root', (_event, rootPath: string) => {
+    fs.mkdirSync(rootPath, { recursive: true })
+    setDefaultRoot(rootPath)
+  })
+
   ipcMain.handle('get-default-root', () => getDefaultRoot())
 
   ipcMain.handle('copy-root', async (_event, destination: string) => {

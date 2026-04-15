@@ -1,5 +1,5 @@
 import Store from 'electron-store'
-import os from 'os'
+import { app } from 'electron'
 import path from 'path'
 import fs from 'fs'
 
@@ -7,21 +7,22 @@ interface StoreSchema {
   defaultRoot: string
 }
 
-const _defaultRoot = path.join(os.homedir(), 'NoteKast')
+const store = new Store<StoreSchema>()
 
-const store = new Store<StoreSchema>({
-  defaults: { defaultRoot: _defaultRoot }
-})
+/** Returns true when the user has never completed first-run setup. */
+export function isFirstRun(): boolean {
+  return !store.has('defaultRoot')
+}
 
 /**
- * Returns the persisted default root, creating the directory on disk if it
- * does not yet exist (e.g. on first launch).
+ * Returns the persisted save location, creating the directory if it does not
+ * exist yet. Falls back to Documents/NoteKast if the store entry is missing
+ * (should not happen after first-run setup, but guards against edge cases).
  */
 export function getDefaultRoot(): string {
-  const root = store.get('defaultRoot')
-  if (!fs.existsSync(root)) {
-    fs.mkdirSync(root, { recursive: true })
-  }
+  const stored = store.get('defaultRoot') as string | undefined
+  const root = stored ?? path.join(app.getPath('documents'), 'NoteKast')
+  if (!fs.existsSync(root)) fs.mkdirSync(root, { recursive: true })
   return root
 }
 
